@@ -8,7 +8,10 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
-        return view('index', compact('products'));
+        return view('index');
+    }
+    public function create()
+    {
+        return view('sell');
     }
 }

@@ -8,7 +8,7 @@ use App\Http\Controllers\UserController;
 
     Route::get('/', [ItemController::class, 'index'])->name('items.index');
 
-
     Route::middleware('auth')->group(function () {
-        Route::get('/', [AuthController::class, 'index']);
+        Route::get('/mypage', [UserController::class, 'mypage'])->name('user.mypage');
+        Route::get('/sell', [ItemController::class, 'sell'])->name('item.sell');
     });
