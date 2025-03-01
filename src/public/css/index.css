@@ -1,69 +1,85 @@
-.attendance__alert--success {
-    padding: 10px 30px;
-    border-color: #badbcc;
-    background-color: #d1e7dd;
-    color: #0f5132;
-}
-
-.attendance__alert--danger {
-    padding: 10px 0;
-    border-color: #f5c2c7;
-    background-color: #f8d7da;
-    color: #842029;
-}
-
-.attendance__alert--danger ul {
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.attendance__panel {
-    margin: 0 auto;
-    width: 70%;
-}
-
-.attendance__button {
+/* ヘッダーのスタイル */
+.header {
+    background-color: #222;
     width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.index-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 40px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+}
+
+.card {
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    background-color: #fff;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    background: #ddd;
+    padding: 50px 0;
     text-align: center;
 }
 
-.attendance__button-submit {
-    padding: 5px;
-    width: 30%;
-    height: 50px;
-    border: none;
-    border-radius: 3px;
-    background: #000;
-    color: #fff;
-    cursor: pointer;
-}
-
-.attendance__content {
-    margin: 0 auto;
-    padding: 30px 15px;
-    max-width: 1230px;
-}
-
-.attendance-table {
-    margin: 30px auto;
-    width: 70%;
+.card-content {
+    padding: 15px;
     text-align: center;
 }
 
-.attendance-table__inner {
-    width: 100%;
-}
-
-.attendance-table__row {
-    border-bottom: 1px solid #ddd;
-}
-
-.attendance-table__header {
-    padding: 12px;
-    width: 20%;
+.card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
-.attendance-table__item {
-    padding: 12px;
-    width: 20%;
+.card-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.card-button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.card-button:hover {
+    background-color: #c0392b;
 }

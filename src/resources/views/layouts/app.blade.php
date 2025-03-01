@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance Management</title>
+    <title>COACHTECH</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
@@ -15,9 +15,7 @@
     <header class="header">
         <div class="header__inner">
         <div class="header-utilities">
-            <a class="header__logo" href="/">
-            Attendance Management
-            </a>
+            <img src="{{ asset('img/logo.svg') }}" alt="coachtech">
             <nav>
             <ul class="header-nav">
                 @if (Auth::check())
@@ -26,7 +24,7 @@
                 </li>
                 <li class="header-nav__item">
                 <form class="form" action="/logout" method="post">
-                    @csrf>
+                    @csrf
                     <button class="header-nav__button">ログアウト</button>
                 </form>
                 </li>

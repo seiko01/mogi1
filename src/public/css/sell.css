@@ -1,0 +1,64 @@
+.sell-container {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.image-upload {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.image-label {
+    display: block;
+    background-color: #f8a5c2;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.image-input {
+    display: none;
+}
+
+.product-details,
+.product-info {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.category-item {
+    background-color: #f8d7da;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+.submit-button {
+    background-color: #f37272;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-button:hover {
+    background-color: #e65a5a;
+}

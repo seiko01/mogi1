@@ -1,3 +1,27 @@
+.header {
+    background-color: #222;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.header__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.header-utilities {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-right: auto;
+}
+
 .register-form__content {
     margin: 0 auto;
     padding: 30px 15px;
@@ -23,6 +47,14 @@
     text-align: left;
 }
 
+.form__group-content input {
+        width: 150%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+}
+
+
 .form__error {
     height: 20px;
     color: #ff0000;
@@ -45,11 +77,11 @@
 
 .form__button-submit {
     padding: 10px;
-    width: 30%;
+    width: 50%;
     height: 50px;
     border: none;
     border-radius: 3px;
-    background: #000;
+    background: #f53e50;
     color: #fff;
     cursor: pointer;
 }

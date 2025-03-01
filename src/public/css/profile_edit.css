@@ -1,0 +1,60 @@
+.profile-edit__container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.profile-edit__title {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.profile-edit__image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-bottom: 10px;
+}
+
+.profile-edit__image-btn {
+    display: inline-block;
+    padding: 10px;
+    background: #f53e50;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.profile-edit__form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.profile-edit__form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.profile-edit__button button {
+    width: 100%;
+    padding: 10px;
+    background: #f53e50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.profile-edit__button button:hover {
+    background: #c0392b;
+}

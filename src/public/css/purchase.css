@@ -1,0 +1,88 @@
+.purchase-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 60%;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-details {
+    font-size: 18px;
+}
+
+.product-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #e74c3c;
+}
+
+.payment-section,
+.shipping-section {
+    margin-top: 20px;
+}
+
+.payment-method {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+}
+
+.shipping-section p {
+    margin: 5px 0;
+}
+
+.change-address {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.order-summary {
+    width: 35%;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+.order-summary table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.order-summary td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.purchase-button {
+    background-color: #f37272;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.purchase-button:hover {
+    background-color: #e65a5a;
+}
