@@ -1,64 +1,95 @@
 .sell-container {
-    width: 50%;
+    max-width: 700px;
     margin: 0 auto;
-    text-align: center;
-}
-
-.title {
-    font-size: 24px;
-    margin-bottom: 20px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .image-upload {
-    border: 2px dashed #ccc;
+    text-align: center;
     padding: 20px;
+    border: 2px dashed #ff6f61;
     margin-bottom: 20px;
     cursor: pointer;
 }
 
-.image-label {
+.details-section h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.submit-btn {
     display: block;
-    background-color: #f8a5c2;
-    padding: 10px;
-    border-radius: 5px;
+    width: 100%;
+    background-color: #ff6f61;
     color: white;
+    padding: 10px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.image-input {
-    display: none;
+.submit-btn:hover {
+    background-color: #ff4f41;
 }
-
-.product-details,
-.product-info {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
 .categories {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 10px;
 }
 
-.category-item {
-    background-color: #f8d7da;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 14px;
-}
-
-.submit-button {
-    background-color: #f37272;
-    color: white;
+.category-btn {
+    display: inline-flex;
+    align-items: center;
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    border: 1px solid #ff6f61;
+    /* ボーダーの色 */
+    border-radius: 20px;
+    color: #ff6f61;
+    /* テキストの色 */
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.submit-button:hover {
-    background-color: #e65a5a;
+.category-btn:hover {
+    background-color: rgba(255, 111, 97, 0.2);
+    /* ホバー時 */
 }
+
+.category-btn input {
+    display: none;
+}
+
+.category-btn span {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ff6f61;
+    border-radius: 20px;
+    color: #ff6f61;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.categories input[type="radio"]:checked+span {
+    background-color: #ff6f61;
+    /* 選択されたボタンの背景色 */
+    color: white;
+    /* テキストの色 */
+    border: 1px solid #ff6f61;
+    /* 枠線 */
+    border-radius: 20px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+

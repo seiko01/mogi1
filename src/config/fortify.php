@@ -74,7 +74,7 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::HOME,
+    'home' => '/',
 
     /*
     |--------------------------------------------------------------------------
@@ -146,6 +146,7 @@ return [
 
     'features' => [
         Features::registration(),
+        Features::emailVerification(),
         Features::resetPasswords(),
         // Features::emailVerification(),
         Features::updateProfileInformation(),

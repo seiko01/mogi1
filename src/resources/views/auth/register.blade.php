@@ -12,19 +12,19 @@
     <form class="form" action="/register" method="post">
         @csrf
         <div class="form__group">
-        <div class="form__group-title">
-            <span class="form__label--item">ユーザー名</span>
-        </div>
-        <div class="form__group-content">
-            <div class="form__input--text">
-            <input type="text" name="name" value="{{ old('name') }}" />
+            <div class="form__group-title">
+                <span class="form__label--item">ユーザー名</span>
             </div>
-            <div class="form__error">
-            @error('name')
-            {{ $message }}
-            @enderror
+            <div class="form__group-content">
+                <div class="form__input--text">
+                <input type="text" name="name" value="{{ old('name') }}" />
+                </div>
+                <div class="form__error">
+                @error('name')
+                {{ $message }}
+                @enderror
+                </div>
             </div>
-        </div>
         </div>
         <div class="form__group">
         <div class="form__group-title">

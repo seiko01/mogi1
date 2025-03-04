@@ -14,7 +14,6 @@
     <body>
     <header class="header">
         <div class="header__inner">
-        <div class="header-utilities">
             <img src="{{ asset('img/logo.svg') }}" alt="coachtech">
             <nav>
             <ul class="header-nav">
@@ -31,7 +30,6 @@
                 @endif
             </ul>
             </nav>
-        </div>
         </div>
     </header>
 

@@ -6,25 +6,49 @@
 
 @section('content')
 <div class="sell-container">
-    <h2 class="title">商品の出品</h2>
+    <h1>商品の出品</h1>
+    <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="image-upload">
+            <label>商品画像</label>
+            <input type="file" name="image">
+        </div>
 
-    <div class="image-upload">
-        <label for="product-image" class="image-label">画像を選択する</label>
-        <input type="file" id="product-image" class="image-input">
-    </div>
+        <div class="details-section">
+            <h2>商品の詳細</h2>
 
-    <div class="product-details">
-        <h3>商品の詳細</h3>
-    </div>
+            <label>カテゴリー</label>
+            <div class="categories">
+                @foreach($categories as $category)
+                    <label class="category-btn">
+                        <input type="radio" name="category_id" value="{{ $category->id }}">
+                        <span>{{ $category->content }}</span>
+                    </label>
+                @endforeach
+            </div>
+            <label>商品の状態</label>
+            <select name="condition_id">
+                <option value="">選択してください</option>
+                @foreach($conditions as $condition)
+                    <option value="{{ $condition->id }}">{{ $condition->name }}</option>
+                @endforeach
+            </select>
 
-    <div class="product-info">
-        <h3>商品名と説明</h3>
-        <input type="text" placeholder="商品名">
-        <input type="text" placeholder="ブランド名">
-        <textarea placeholder="商品の説明"></textarea>
-        <input type="text" placeholder="販売価格">
-    </div>
+            <h2>商品名と説明</h2>
+            <label>商品名</label>
+            <input type="text" name="name">
 
-    <button class="submit-button">出品する</button>
+            <label>ブランド名</label>
+            <input type="text" name="brand">
+
+            <label>商品の説明</label>
+            <textarea name="description"></textarea>
+
+            <label>販売価格</label>
+            <input type="number" name="price" placeholder="¥">
+        </div>
+
+        <button type="submit" class="submit-btn">出品する</button>
+    </form>
 </div>
 @endsection

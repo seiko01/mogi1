@@ -6,24 +6,32 @@
 
 @section('content')
 <div class="mypage-container">
-    <div class="mypage-header">
-        <img src="プロフィール画像" alt="ユーザー画像" class="mypage-image">
-        <div class="mypage-username">ユーザー名</div>
-        <a href="{{ route('profile.edit') }}" class="mypage-edit-button">プロフィールを編集</a>
-    </div>
-
-    <div class="mypage-tabs">
-        <a href="#" class="mypage-tab active">出品した商品</a>
-        <a href="#" class="mypage-tab">購入した商品</a>
-    </div>
-
-    <div class="mypage-items">
-        @for ($i = 0; $i < 6; $i++)
-        <div class="mypage-item">
-            <div class="mypage-item-image">商品画像</div>
-            <div class="mypage-item-name">商品名</div>
+    <h1>プロフィール設定</h1>
+    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
+        <div class="image-upload">
+            <label for="image-upload" class="profile-image">
+                <img src="{{ asset('images/default-avatar.png') }}" alt="プロフィール画像">
+                <input type="file" name="image" id="image-upload">
+                <button type="button" class="image-select-btn">画像を選択する</button>
+            </label>
         </div>
-        @endfor
-    </div>
+        
+
+        <label>ユーザー名</label>
+        <input type="text" name="name" value="{{ old('name', Auth::user()->name) }}">
+
+        <label>郵便番号</label>
+        <input type="text" name="postcode" value="{{ old('postcode', Auth::user()->profile->postcode ?? '') }}">
+
+        <label>住所</label>
+        <input type="text" name="address" value="{{ old('address', Auth::user()->profile->address ?? '') }}">
+
+        <label>建物名</label>
+        <input type="text" name="building" value="{{ old('building', Auth::user()->profile->building ?? '') }}">
+
+        <button type="submit" class="submit-btn">更新する</button>
+    </form>
 </div>
 @endsection
