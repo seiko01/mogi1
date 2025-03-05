@@ -22,7 +22,7 @@
                 @foreach($categories as $category)
                     <label class="category-btn">
                         <input type="radio" name="category_id" value="{{ $category->id }}">
-                        <span>{{ $category->content }}</span>
+                        <span>{{ $category->category }}</span>
                     </label>
                 @endforeach
             </div>
