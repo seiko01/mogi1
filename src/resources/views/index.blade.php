@@ -12,9 +12,12 @@
         <div class="logo">COACHTECH</div>
         <input type="text" placeholder="なにをお探しですか？">
         <div class="nav-links">
-            <a href="#">ログアウト</a>
-            <a href="#">マイページ</a>
-            <button class="sell-button">出品</button>
+            <form method="POST" action="{{ route('logout') }}" class="logout-form">
+                @csrf
+                <button type="submit" class="btn-logout">ログアウト</button>
+            </form>
+            <a href="{{ route('mypage') }}">マイページ</a>
+            <a href="{{ route('item.sell') }}" class="sell-button">出品</a>
         </div>
     </nav>
 

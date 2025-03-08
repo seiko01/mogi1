@@ -21,7 +21,8 @@
             <div class="categories">
                 @foreach($categories as $category)
                     <label class="category-btn">
-                        <input type="radio" name="category_id" value="{{ $category->id }}">
+                        <input type="radio" name="category_id" value="{{ $category->id }}" 
+                            {{ old('category_id') == $category->id ? 'checked' : '' }}>
                         <span>{{ $category->category }}</span>
                     </label>
                 @endforeach
@@ -30,10 +31,12 @@
             <select name="condition_id">
                 <option value="">選択してください</option>
                 @foreach($conditions as $condition)
-                    <option value="{{ $condition->id }}">{{ $condition->name }}</option>
+                    <option value="{{ $condition->id }}" 
+                        {{ old('condition_id') == $condition->id ? 'selected' : '' }}>
+                        {{ $condition->name }}
+                    </option>
                 @endforeach
             </select>
-
             <h2>商品名と説明</h2>
             <label>商品名</label>
             <input type="text" name="name">

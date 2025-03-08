@@ -11,13 +11,16 @@ class ItemController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $items = Item::all();
+            return view('index', compact('items'));
     }
 
     public function create()
     {
         $categories = Category::all();
         $conditions = Condition::all();
+
+        dd($conditions);
         return view('sell', compact('categories', 'conditions'));
     }
 

@@ -9,7 +9,7 @@
     <h1>プロフィール設定</h1>
     <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
+        @method('PATCH')
         <div class="image-upload">
             <label for="image-upload" class="profile-image">
                 <img src="{{ asset('images/default-avatar.png') }}" alt="プロフィール画像">
@@ -17,7 +17,6 @@
                 <button type="button" class="image-select-btn">画像を選択する</button>
             </label>
         </div>
-        
 
         <label>ユーザー名</label>
         <input type="text" name="name" value="{{ old('name', Auth::user()->name) }}">
