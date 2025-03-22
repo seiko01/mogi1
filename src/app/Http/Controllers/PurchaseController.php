@@ -4,52 +4,62 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
-use App\Models\Purchase;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
-    // 商品購入ページの表示
-    public function purchase($item_id)
+    // 商品購入ページを表示
+    public function show($itemId)
     {
-        $item = Item::findOrFail($item_id);
-        return view('purchase', compact('item'));
+        $item = Item::findOrFail($itemId);
+        $user = Auth::user();
+        $profile = $user->profile;
+
+        return view('purchase', compact('item', 'profile'));
     }
 
-    // 商品を購入する処理（POST）
-    public function processPurchase(Request $request, $item_id)
-    {
-        $item = Item::findOrFail($item_id);
+public function store(Request $request, $itemId)
+{
+    $item = Item::findOrFail($itemId);
 
-        // 購入処理（例: データベースに購入情報を保存）
-        $purchase = new Purchase();
-        $purchase->user_id = Auth::id();
-        $purchase->item_id = $item->id;
-        $purchase->address = $request->address;
-        $purchase->save();
+    $order = new Order();
+    $order->user_id = Auth::id();
+    $order->item_id = $item->id; // 商品IDを追加
+    $order->quantity = 1; // 数量を追加
+    $order->total_amount = $item->price;
+    $order->payment_method = $request->input('payment_method', 'credit_card'); // 仮の支払い方法
+    $order->placed_at = now();
+    $order->save();
 
-        return redirect()->route('purchase', ['item_id' => $item_id])->with('success', '商品を購入しました！');
-    }
+    return redirect()->route('mypage')->with('success', '購入が完了しました！');
+}
 
-    // 送付先住所変更ページの表示
-    public function updateAddress($item_id)
-    {
-        $item = Item::findOrFail($item_id);
-        $purchase = Purchase::where('user_id', Auth::id())->where('item_id', $item_id)->firstOrFail();
-        return view('update_address', compact('item', 'purchase'));
-    }
+public function editAddress($item_id)
+{
+    $user = Auth::user();
+    $profile = $user->profile; // 住所情報を取得
 
-    // 送付先住所の変更処理（PATCH）
-    public function processUpdateAddress(Request $request, $item_id)
-    {
-        $request->validate([
-            'address' => 'required|string|max:255',
-        ]);
+    $item = Item::findOrFail($item_id);
 
-        $purchase = Purchase::where('user_id', Auth::id())->where('item_id', $item_id)->firstOrFail();
-        $purchase->address = $request->address;
-        $purchase->save();
+    return view('address_edit', compact('profile', 'item'));
+}
+public function updateAddress(Request $request, $item_id)
+{
+    $request->validate([
+        'postcode' => 'required|string',
+        'address' => 'required|string',
+        'building' => 'nullable|string',
+    ]);
 
-        return redirect()->route('purchase.address', ['item_id' => $item_id])->with('success', '送付先住所を更新しました！');
-    }
+    $user = Auth::user();
+    $user->profile->update([
+        'postcode' => $request->postcode,
+        'address' => $request->address,
+        'building' => $request->building,
+    ]);
+
+    return redirect()->route('purchase.show', ['item' => $item_id])->with('success', '住所を更新しました！');
+}
 }

@@ -1,80 +1,46 @@
-.show-container {
+.product-detail-container {
     display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin: 20px auto;
+    width: 1380px;
+    height: 1702px;
+    margin-left: 66px;
+    margin-top: 66px;
+    background-color:#FFFFFF
 }
 
-.product-image {
-    width: 400px;
-    height: 400px;
-    background-color: #ccc;
+.product-detail-container img {
+    width: 600px;
+    height: 600px;
+    margin-left: 45px;
+    margin-top: 36px;
+    background-color: #D9D9D9
+    padding-top: 66px;
+}
+
+.product-info h2 {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    color: #666;
+    flex-direction: column;
+    max-width: 600px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    align-self: flex-end;
 }
 
-.product-details {
-    width: 50%;
-}
-
-.product-name {
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.brand-name {
-    font-size: 16px;
-    color: #777;
-}
-
-.product-price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #e74c3c;
-}
-
-.tax-included {
-    font-size: 14px;
-    color: #777;
-}
-
-.product-actions {
+.product-info p {
     display: flex;
-    gap: 15px;
-    margin: 10px 0;
-}
-
-.favorite,
-.comments {
+        flex-direction: column;
+        max-width: 600px;
     font-size: 16px;
-    color: #777;
+    margin-bottom: 10px;
 }
 
-.purchase-button {
-    background-color: #f37272;
+.btn-primary {
+    background-color: #E55050;
     color: white;
-    padding: 10px;
+    padding: 10px 20px;
     border: none;
-    width: 100%;
-    cursor: pointer;
-    font-size: 16px;
     border-radius: 5px;
+    cursor: pointer;
     margin-bottom: 20px;
-}
-
-.purchase-button:hover {
-    background-color: #e65a5a;
-}
-
-.tag {
-    background-color: #ddd;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 14px;
-    margin-right: 5px;
 }
 
 .comment {
@@ -91,46 +57,51 @@
 }
 
 .user-icon {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-color: #bbb;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    color: white;
+    overflow: hidden;
+}
+
+.user-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .username {
     font-weight: bold;
+    color: #333;
 }
 
-.comment-text {
-    margin-top: 5px;
+.comments-input{
+    width: 570px;
+    height: 422px;
 }
 
-textarea {
-    width: 100%;
-    height: 80px;
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.comments-input textarea{
+    width: 570px;
+    height: 246px;
 }
 
-.comment-button {
-    background-color: #f37272;
+.comment-button{
+    background-color: #E55050;
     color: white;
-    padding: 10px;
     border: none;
-    width: 100%;
-    cursor: pointer;
-    font-size: 16px;
     border-radius: 5px;
-    margin-top: 10px;
+    width: 570px;
+    height: 50px;
 }
 
-.comment-button:hover {
-    background-color: #e65a5a;
+.product-img-area{
+    width: 600px;
+    height: 1700px;
+}
+
+.product-descriotion-area
+{
+    width: 690px;
+    height: 1700px;
+    margin-left: 690px;
 }

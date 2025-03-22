@@ -1,3 +1,68 @@
+.header {
+    background-color: #000000;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.header__inner {
+    max-width: 1600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.header__logo img {
+    height: 40px;
+}
+
+.header__search-form {
+    width: 100%;
+    max-width: 500px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    background-color: white;
+    padding: 5px 10px;
+    margin-left: 80px;
+}
+
+.header__search-form input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+    height: 100%;
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+
+.header__nav a,
+.header__nav button {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.header__nav .sell-button {
+    background-color: white;
+    color: black;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
 .mypage-container {
     max-width: 700px;
         margin: 0 auto;
@@ -31,7 +96,7 @@
     background-color: #ff4f41;
 }
 
-input[type="text"] {
+.mypage-container input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;

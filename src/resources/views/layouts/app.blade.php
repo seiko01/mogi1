@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,30 +12,33 @@
     </head>
 
     <body>
-    <header class="header">
-        <div class="header__inner">
-            <img src="{{ asset('img/logo.svg') }}" alt="coachtech">
-            <nav>
-            <ul class="header-nav">
+        <header class="header">
+            <div class="header__inner">
+                <div class="header__logo">
+                    <img src="{{ asset('img/logo.svg') }}" alt="COACHTECH">
+                </div>
+                @if (!in_array(Route::currentRouteName(), ['login', 'register']))
+                    <form class="header__search-form" action="{{ route('items.search') }}" method="GET">
+                        <input type="text" name="query" placeholder="なにをお探しですか？">
+                    </form>
+                <nav class="header__nav">
                 @if (Auth::check())
-                <li class="header-nav__item">
-                <a class="header-nav__link" href="/mypage">マイページ</a>
-                </li>
-                <li class="header-nav__item">
-                <form class="form" action="/logout" method="post">
-                    @csrf
-                    <button class="header-nav__button">ログアウト</button>
-                </form>
-                </li>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit">ログアウト</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}">ログイン</a>
                 @endif
-            </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        @yield('content')
-    </main>
-</body>
+                    <a href="{{ route('mypage') }}">マイページ</a>
+                    <a href="{{ route('items.create') }}" class="sell-button">出品</a>
+                </nav>
+                @endif
+            </div>
+        </header>
+        <main>
+            @yield('content')
+        </main>
+    </body>
 
 </html>

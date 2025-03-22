@@ -8,17 +8,18 @@
 <div class="purchase-container">
     <div class="product-info">
         <div class="product-image">
-            <span>商品画像</span>
+            <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像">
         </div>
         <div class="product-details">
-            <h2 class="product-name">商品名</h2>
-            <p class="product-price">¥ 47,000</p>
+            <h2 class="product-name">{{ $item->name }}</h2>
+            <p class="product-price">¥ {{ number_format($item->price) }}</p>
         </div>
     </div>
-
+<form action="{{ route('purchase.process', ['item' => $item->id]) }}" method="POST">
+    @csrf
     <div class="payment-section">
         <h3>支払い方法</h3>
-        <select class="payment-method">
+        <select name="payment_method" class="payment-method" required>
             <option value="">選択してください</option>
             <option value="credit">クレジットカード</option>
             <option value="convenience">コンビニ払い</option>
@@ -26,22 +27,29 @@
         </select>
     </div>
 
-    <div class="shipping-section">
-        <h3>配送先</h3>
-        <p>〒 XXX-YYYY</p>
-        <p>ここには住所と建物が入ります</p>
-        <a href="#" class="change-address">変更する</a>
-    </div>
-
-    <div class="order-summary">
+        <div class="shipping-section">
+            <h3>配送先</h3>
+            <p>〒 {{ optional(Auth::user()->profile)->postcode ?? '未登録' }}</p>
+            <p>
+                {{ optional(Auth::user()->profile)->address ?? '未登録' }}
+                {{ optional(Auth::user()->profile)->building ?? '' }}
+            </p>
+            <a href="{{ route('purchase.address.edit', ['item_id' => $item->id]) }}" class="change-address">変更する</a>
+        </div>
+        <div class="order-summary">
         <table>
             <tr>
                 <td>商品代金</td>
-                <td>¥ 47,000</td>
+                <td>¥ {{ number_format($item->price) }}</td>
             </tr>
             <tr>
                 <td>支払い方法</td>
-                <td>コンビニ払い</td>
+                <td><span id="selected-payment">選択されていません</span></td>
             </tr>
         </table>
-        <button class="purchase-button">購入する</button
+    </div>
+</form>
+<form action="{{ route('purchase.process', ['item' => $item->id]) }}" method="POST">
+    @csrf
+    <button type="submit">購入する</button>
+</form>

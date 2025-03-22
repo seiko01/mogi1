@@ -42,7 +42,7 @@
             <input type="text" name="name">
 
             <label>ブランド名</label>
-            <input type="text" name="brand">
+            <input type="text" name="brand_name">
 
             <label>商品の説明</label>
             <textarea name="description"></textarea>

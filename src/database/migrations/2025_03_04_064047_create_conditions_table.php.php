@@ -25,8 +25,17 @@ class CreateConditionsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('conditions');
+public function down()
+{
+// items テーブルと外部キーの存在を確認して削除
+    if (Schema::hasTable('items')) {
+        Schema::table('items', function (Blueprint $table) {
+            // 外部キーが存在する場合にのみ削除
+            $table->dropForeign(['condition_id']);
+        });
     }
+
+    // conditions テーブルの削除
+    Schema::dropIfExists('conditions');
+}
 }
