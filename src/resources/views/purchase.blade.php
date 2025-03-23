@@ -17,39 +17,40 @@
     </div>
 <form action="{{ route('purchase.process', ['item' => $item->id]) }}" method="POST">
     @csrf
-    <div class="payment-section">
-        <h3>支払い方法</h3>
-        <select name="payment_method" class="payment-method" required>
-            <option value="">選択してください</option>
-            <option value="credit">クレジットカード</option>
-            <option value="convenience">コンビニ払い</option>
-            <option value="bank">銀行振込</option>
-        </select>
-    </div>
-
-        <div class="shipping-section">
-            <h3>配送先</h3>
-            <p>〒 {{ optional(Auth::user()->profile)->postcode ?? '未登録' }}</p>
-            <p>
-                {{ optional(Auth::user()->profile)->address ?? '未登録' }}
-                {{ optional(Auth::user()->profile)->building ?? '' }}
-            </p>
-            <a href="{{ route('purchase.address.edit', ['item_id' => $item->id]) }}" class="change-address">変更する</a>
+    <div class="purchase-wrapper">
+        <div class="purchase-details">
+            <div class="payment-section">
+                <h3>支払い方法</h3>
+                <select name="payment_method" class="payment-method" required>
+                    <option value="">選択してください</option>
+                    <option value="credit">クレジットカード</option>
+                    <option value="convenience">コンビニ払い</option>
+                    <option value="bank">銀行振込</option>
+                </select>
+            </div>
+            <div class="shipping-section">
+                <h3>配送先</h3>
+                <p>〒 {{ optional(Auth::user()->profile)->postcode ?? '未登録' }}</p>
+                <p>
+                    {{ optional(Auth::user()->profile)->address ?? '未登録' }}
+                    {{ optional(Auth::user()->profile)->building ?? '' }}
+                </p>
+                <a href="{{ route('purchase.address.edit', ['item_id' => $item->id]) }}" class="change-address">変更する</a>
+            </div>
         </div>
+
         <div class="order-summary">
-        <table>
-            <tr>
-                <td>商品代金</td>
-                <td>¥ {{ number_format($item->price) }}</td>
-            </tr>
-            <tr>
-                <td>支払い方法</td>
-                <td><span id="selected-payment">選択されていません</span></td>
-            </tr>
-        </table>
+            <table>
+                <tr>
+                    <td>商品代金</td>
+                    <td>¥ {{ number_format($item->price) }}</td>
+                </tr>
+                <tr>
+                    <td>支払い方法</td>
+                    <td><span id="selected-payment">選択されていません</span></td>
+                </tr>
+            </table>
+        </div>
     </div>
-</form>
-<form action="{{ route('purchase.process', ['item' => $item->id]) }}" method="POST">
-    @csrf
-    <button type="submit">購入する</button>
+    <button type="submit" class="purchase-button">購入する</button>
 </form>

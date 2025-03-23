@@ -13,7 +13,7 @@
     margin-left: 45px;
     margin-top: 36px;
     background-color: #D9D9D9
-    padding-top: 66px;
+    padding-top 66px;
 }
 
 .product-info h2 {
@@ -27,8 +27,8 @@
 
 .product-info p {
     display: flex;
-        flex-direction: column;
-        max-width: 600px;
+    flex-direction: column;
+    max-width: 600px;
     font-size: 16px;
     margin-bottom: 10px;
 }

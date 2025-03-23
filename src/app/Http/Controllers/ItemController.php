@@ -16,11 +16,11 @@ class ItemController extends Controller
         $items = Item::all();
         return view('index', compact('items'));
     }
-public function show($itemId)
-{
-    $item = Item::with('category', 'condition', 'comments.user')->findOrFail($itemId);
-    return view('show', compact('item'));
-}
+    public function show($id)
+    {
+        $item = Item::with('comments.user')->findOrFail($id);
+        return view('show', compact('item'));
+    }
     public function create()
     {
         $categories = Category::all();
@@ -49,4 +49,5 @@ public function show($itemId)
 
         return redirect()->route('items.index');
     }
+    
 }

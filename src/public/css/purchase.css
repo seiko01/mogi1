@@ -2,8 +2,11 @@
     background-color: #000000;
     width: 100%;
     padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
-
 .header__inner {
     max-width: 1600px;
     display: flex;
@@ -52,6 +55,7 @@
     border: none;
     font-size: 16px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .header__nav .sell-button {
@@ -62,11 +66,17 @@
     font-weight: bold;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 .purchase-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     width: 80%;
-    margin: 20px auto;
+    margin: 100px auto 20px auto;
 }
 
 .product-info {
@@ -77,8 +87,8 @@
 }
 
 .product-image {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     background-color: #ccc;
     display: flex;
     align-items: center;
@@ -90,18 +100,19 @@
 }
 
 .product-name {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
 }
 
 .product-price {
-    font-size: 18px;
+    font-size: 20px;
     color: #e74c3c;
 }
 
 .payment-section,
 .shipping-section {
     margin-top: 20px;
+    width: 265px;
 }
 
 .payment-method {
@@ -117,6 +128,30 @@
 .change-address {
     color: #3498db;
     text-decoration: none;
+}
+
+form {
+    width: 100%;
+}
+
+form button {
+    display: block;
+    margin-top: 20px;
+}
+
+#selected-payment {
+    color: #333;
+    font-weight: bold;
+}
+
+.purchase-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.purchase-details {
+    width: 60%;
 }
 
 .order-summary {
@@ -141,7 +176,7 @@
     color: white;
     padding: 10px;
     border: none;
-    width: 100%;
+    width: 440px;
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
