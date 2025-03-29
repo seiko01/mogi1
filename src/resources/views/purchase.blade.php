@@ -47,7 +47,17 @@
                 </tr>
                 <tr>
                     <td>支払い方法</td>
-                    <td><span id="selected-payment">選択されていません</span></td>
+                    <td>
+                        @if (old('payment_method') === 'credit')
+                            クレジットカード
+                        @elseif (old('payment_method') === 'convenience')
+                            コンビニ払い
+                        @elseif (old('payment_method') === 'bank')
+                            銀行振込
+                        @else
+                            選択されていません
+                        @endif
+                    </td>
                 </tr>
             </table>
         </div>

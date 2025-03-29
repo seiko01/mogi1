@@ -9,10 +9,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ItemLikeController;
 
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
 Route::get('/search', [ItemController::class, 'search'])->name('items.search');
 Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
+Route::get('/item/{item}', [ItemController::class, 'show'])->name('item.show');
+Route::post('/like/{id}', [ItemLikeController::class, 'store'])->name('like.store');
+Route::delete('/like/{id}', [ItemLikeController::class, 'destroy'])->name('like.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
@@ -23,7 +27,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [UserController::class, 'profileEdit'])->name('profile.edit');
     Route::patch('/profile/update', [UserController::class, 'update'])->name('profile.update');
 
-    Route::get('/item/{item}', [ItemController::class, 'show'])->name('item.show');
     Route::get('/purchase/{item}', [PurchaseController::class, 'show'])->name('purchase.show');
     Route::post('/purchase/{item}', [PurchaseController::class, 'store'])->name('purchase.process');
 

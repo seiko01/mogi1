@@ -19,9 +19,6 @@ class CreateCommentsTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('comment');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }
 
@@ -32,6 +29,10 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
+        Schema::table('comments', function (Blueprint $table) {
+            $table->dropForeign(['item_id']);
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('comments');
     }
 }

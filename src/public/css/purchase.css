@@ -66,10 +66,11 @@
     font-weight: bold;
 }
 
-body {
+.body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    padding-top: 60px;
 }
 
 .purchase-container {
@@ -83,7 +84,11 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
-    width: 60%;
+    border-bottom: 1px solid #ddd;
+    width: 805px;
+    position: absolute;
+    top: 177.53px;
+    left: 80px;
 }
 
 .product-image {
@@ -109,10 +114,22 @@ body {
     color: #e74c3c;
 }
 
-.payment-section,
+.payment-section {
+    margin-top: 20px;
+    width: 805px;
+    position: absolute;
+    top: 403px;
+    left: 115px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
 .shipping-section {
     margin-top: 20px;
-    width: 265px;
+    width: 805px;
+    position: absolute;
+    top: 593px;
+    left: 115px;
+    border-bottom: 1px solid #ddd;
 }
 
 .payment-method {
@@ -128,15 +145,6 @@ body {
 .change-address {
     color: #3498db;
     text-decoration: none;
-}
-
-form {
-    width: 100%;
-}
-
-form button {
-    display: block;
-    margin-top: 20px;
 }
 
 #selected-payment {
@@ -155,19 +163,22 @@ form button {
 }
 
 .order-summary {
-    width: 35%;
+    width: 440px;
     border: 1px solid #ddd;
     padding: 20px;
     text-align: center;
+    height: 230px;
+    position: absolute;
+    top: 173px;
+    left: 987px;
 }
 
 .order-summary table {
     width: 100%;
-    margin-bottom: 20px;
 }
 
 .order-summary td {
-    padding: 10px;
+    padding: 30px;
     border-bottom: 1px solid #ddd;
 }
 
@@ -180,6 +191,11 @@ form button {
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
+    height: 60px;
+    position: absolute;
+    top: 469px;
+    left: 987px;
+
 }
 
 .purchase-button:hover {
