@@ -148,4 +148,10 @@ select {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
+.icon-button .like-icon {
+    color: gray;
+    transition: color 0.3s;
+}
+.icon-button.liked .like-icon {
+    color: gold;
+}

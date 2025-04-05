@@ -20,12 +20,12 @@
     <div class="purchase-wrapper">
         <div class="purchase-details">
             <div class="payment-section">
-                <h3>支払い方法</h3>
+            <h3>支払い方法</h3>
                 <select name="payment_method" class="payment-method" required>
                     <option value="">選択してください</option>
-                    <option value="credit">クレジットカード</option>
-                    <option value="convenience">コンビニ払い</option>
-                    <option value="bank">銀行振込</option>
+                    <option value="credit" {{ old('payment_method') === 'credit' ? 'selected' : '' }}>クレジットカード</option>
+                    <option value="convenience" {{ old('payment_method') === 'convenience' ? 'selected' : '' }}>コンビニ払い</option>
+                    <option value="bank" {{ old('payment_method') === 'bank' ? 'selected' : '' }}>銀行振込</option>
                 </select>
             </div>
             <div class="shipping-section">

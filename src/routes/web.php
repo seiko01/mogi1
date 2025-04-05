@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ItemLikeController;
 
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
 Route::get('/search', [ItemController::class, 'search'])->name('items.search');
 Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
@@ -35,6 +38,5 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/comments/store/{item}', [CommentController::class, 'store'])->name('comments.store');
 
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-            ->name('logout');
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
     });

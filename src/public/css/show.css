@@ -1,6 +1,6 @@
 .product-detail-container {
     display: flex;
-    width: 1380px;
+    width: 700px;
     height: 1702px;
     margin-left: 66px;
     margin-top: 66px;
@@ -77,12 +77,12 @@
 }
 
 .comments-input{
-    width: 570px;
+    width: 500px;
     height: 422px;
 }
 
 .comments-input textarea{
-    width: 570px;
+    width: 500px;
     height: 246px;
 }
 
@@ -102,9 +102,9 @@
 
 .product-descriotion-area
 {
-    width: 690px;
+    width: 500px;
     height: 1700px;
-    margin-left: 690px;
+    margin-left: 200px;
 }
 
 .icon-button {

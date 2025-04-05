@@ -16,11 +16,21 @@ class ItemController extends Controller
         $items = Item::all();
         return view('index', compact('items'));
     }
+
     public function show($id)
     {
-        $item = Item::with('comments.user')->findOrFail($id);
-        return view('show', compact('item'));
+        $item = Item::with(['comments.user', 'likes'])->findOrFail($id);
+
+        $user = auth()->user();
+        $isLiked = false;
+
+        if ($user) {
+            $isLiked = $item->likes->contains('user_id', $user->id);
+        }
+
+        return view('show', compact('item', 'isLiked'));
     }
+
     public function create()
     {
         $categories = Category::all();
@@ -49,5 +59,4 @@ class ItemController extends Controller
 
         return redirect()->route('items.index');
     }
-    
 }

@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PurchaseRequest;
 
 class PurchaseController extends Controller
 {
@@ -19,7 +20,7 @@ class PurchaseController extends Controller
         return view('purchase', compact('item', 'profile'));
     }
 
-    public function store(Request $request, $itemId)
+    public function store(PurchaseRequest $request, $itemId)
     {
         $item = Item::findOrFail($itemId);
 

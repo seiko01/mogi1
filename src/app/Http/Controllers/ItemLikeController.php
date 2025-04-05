@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ItemLikeController extends Controller
 {
-public function store($id)
+    public function store($id)
     {
         if (Auth::guest()) {
             return response()->json(['message' => 'ログインしてください'], 401);
@@ -27,7 +27,7 @@ public function store($id)
             $like->save();
             $isLiked = true;
         }
-    return redirect()->route('item.show', ['item' => $id])->with('isLiked', $isLiked);
+        return redirect()->route('item.show', ['item' => $id])->with('isLiked', $isLiked);
     }
 
     public function destroy($id)
@@ -43,12 +43,14 @@ public function store($id)
 
         return redirect()->route('item.show', ['item' => $id])->with('isLiked', $isLiked);
     }
+
     public function myList()
     {
         $likes = Like::where('user_id', Auth::id())->get();
         $items = Item::whereIn('id', $likes->pluck('item_id'))->get();
         return view('mylist', compact('items'));
     }
+    
     public function show($id)
         {
             $item = Item::findOrFail($id);
