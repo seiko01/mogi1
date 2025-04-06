@@ -15,6 +15,7 @@
             <p class="product-price">¥ {{ number_format($item->price) }}</p>
         </div>
     </div>
+@if ($item->status != 'sold_out')
 <form action="{{ route('purchase.process', ['item' => $item->id]) }}" method="POST">
     @csrf
     <div class="purchase-wrapper">
@@ -64,3 +65,8 @@
     </div>
     <button type="submit" class="purchase-button">購入する</button>
 </form>
+@else
+        <button type="button" class="purchase-button" disabled>購入済み</button>
+    @endif
+</div>
+@endsection

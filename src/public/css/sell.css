@@ -71,6 +71,11 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
+.sell-container h1{
+    text-align: center;
+}
+
+
 .image-upload {
     text-align: center;
     padding: 20px;
@@ -79,15 +84,25 @@
     cursor: pointer;
 }
 
-.details-section h2 {
+.image {
     margin-bottom: 15px;
     font-size: 18px;
     font-weight: bold;
+
 }
+
+
+.details-section h2 {
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: 2px solid #5F5F5F;
+}
+
 .submit-btn {
     display: block;
     width: 100%;
-    background-color: #ff6f61;
+    background-color: #ff4f41;
     color: white;
     padding: 10px;
     text-align: center;
@@ -99,46 +114,35 @@
 .submit-btn:hover {
     background-color: #ff4f41;
 }
-.categories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
 .category-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 20px;
-    border-radius: 20px;
-    color: #ff0000;
+    display: inline-block;
+    margin: 5px;
     cursor: pointer;
+    color: #ff4f41;
 }
 
-
-.category-btn input {
+.category-btn input[type="checkbox"] {
     display: none;
 }
 
 .category-btn span {
     display: inline-block;
-    padding: 10px 20px;
-    border: 1px solid #ff6f61;
-    border-radius: 20px;
-    color: #ff6f61;
+    padding: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #ff4f41;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
 }
 
-.categories input[type="radio"]:checked+span {
-    background-color: #ff6f61;
-    /* 選択されたボタンの背景色 */
+.category-btn input[type="checkbox"]:checked+span {
+    background-color: #ff4f41;
     color: white;
-    /* テキストの色 */
-    border: 1px solid #ff6f61;
-    /* 枠線 */
-    border-radius: 20px;
 }
 
+.category-btn input[type="checkbox"]:not(:checked)+span:hover {
+    background-color: #feacac;
+    color: white;
+}
 .details-section input,
 textarea,
 select {

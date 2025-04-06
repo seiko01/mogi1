@@ -25,6 +25,7 @@ class CreateItemsTable extends Migration
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
             $table->timestamps();
+            $table->string('status')->default('available');
         });
     }
 

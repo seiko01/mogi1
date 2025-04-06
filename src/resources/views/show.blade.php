@@ -50,16 +50,23 @@
                     <div class="icon-count">{{ isset($item->comments) ? $item->comments->count() : 0 }}</div>
                 </div>
             </div>
-            @if($item->status != 'sold_out')
+            @if($item->status == 'available')
                 <form action="{{ route('purchase.show', ['item' => $item->id]) }}" method="GET">
-                @csrf
+                    @csrf
                     <button type="submit" class="btn btn-primary">購入手続きへ</button>
                 </form>
+            @else
+                <button type="button" class="btn btn-secondary" disabled>購入済み</button>
+                
             @endif
             <h3>商品説明</h3>
             <p>{{ $item->description }}</p>
             <h3>商品の情報</h3>
-            <p>カテゴリー:{{ $item->category->category }}</p>
+            <p>カテゴリー:
+                @foreach($item->categories as $category)
+                    {{ $category->category }}@if (!$loop->last), @endif
+                @endforeach
+            </p>
             <p>商品の状態:{{ $item->condition->name }}</p>
             <h3>コメント ({{ $item->comments->count() }})</h3>
                 @if ($item->comments->isEmpty())

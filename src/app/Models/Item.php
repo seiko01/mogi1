@@ -5,17 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Comment;
+use App\Models\Category;
+use App\Models\Condition;
+use App\Models\Like;
 
 class Item extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-            'user_id', 'name', 'brand_name', 'description', 'price', 'category_id', 'condition_id', 'image'
+            'user_id', 'name', 'brand_name', 'description', 'price', 'condition_id', 'image', 'status'
     ];
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class, 'item_categories')
+        ->withTimestamps();
     }
 
     public function condition()

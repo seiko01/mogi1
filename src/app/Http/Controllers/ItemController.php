@@ -41,6 +41,12 @@ class ItemController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+                'name' => 'required|string|max:255',
+                'price' => 'required|numeric',
+                'category_ids' => 'required|array',
+                'category_ids.*' => 'exists:categories,id',
+        ]);
 
         $item = new Item();
         $item->user_id = Auth::id();
@@ -48,7 +54,6 @@ class ItemController extends Controller
         $item->brand_name = $request->brand_name;
         $item->description = $request->description;
         $item->price = $request->price;
-        $item->category_id = $request->category_id;
         $item->condition_id = $request->condition_id;
 
         if ($request->hasFile('image')) {
@@ -56,6 +61,8 @@ class ItemController extends Controller
             $item->image = $path;
         }
         $item->save();
+
+        $item->categories()->attach($request->category_ids);
 
         return redirect()->route('items.index');
     }

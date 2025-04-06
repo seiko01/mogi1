@@ -22,7 +22,11 @@ class PurchaseController extends Controller
 
     public function store(PurchaseRequest $request, $itemId)
     {
+
         $item = Item::findOrFail($itemId);
+
+        $item->status = 'sold_out';
+        $item->save();
 
         $order = new Order();
         $order->user_id = Auth::id();
