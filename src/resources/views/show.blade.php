@@ -7,7 +7,11 @@
 @section('content')
     <div class="product-detail-container">
         <div class="product-img-area">
-        <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像">
+            @if ($item->img_url)
+                <img src="{{ $item->img_url }}" alt="商品画像">
+            @else
+                <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像">
+            @endif
         </div>
         <div class="product-descriotion-area">
             <h2>{{ $item->name }}</h2>
@@ -57,7 +61,6 @@
                 </form>
             @else
                 <button type="button" class="btn btn-secondary" disabled>購入済み</button>
-                
             @endif
             <h3>商品説明</h3>
             <p>{{ $item->description }}</p>

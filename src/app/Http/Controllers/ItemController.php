@@ -9,11 +9,24 @@ use App\Models\Condition;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
-class ItemController extends Controller
-{
-    public function index()
+    class ItemController extends Controller
     {
-        $items = Item::all();
+    public function index(Request $request)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->route('login')->with('error', 'ログインしてください。');
+        }
+
+        if ($request->tab === 'recommend') {
+            $items = Item::whereNull('user_id')
+                ->orWhere('user_id', '!=', $user->id)
+                ->get();
+        } else {
+            $items = $user->likes()->with('item')->get()->pluck('item');
+        }
+
         return view('index', compact('items'));
     }
 
@@ -65,5 +78,13 @@ class ItemController extends Controller
         $item->categories()->attach($request->category_ids);
 
         return redirect()->route('items.index');
+    }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $items = Item::where('name', 'like', '%' . $query . '%')->get();
+
+        return view('index', compact('items'));
     }
 }

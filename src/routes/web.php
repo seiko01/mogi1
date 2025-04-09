@@ -26,11 +26,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/sell', [ItemController::class, 'create'])->name('sell');
     Route::post('/items', [ItemController::class, 'store'])->name('items.store');
 
-
-    Route::get('/profile/edit', [UserController::class, 'profileEdit'])->name('profile.edit');
+    Route::get('/profile_edit', [UserController::class, 'edit'])->name('profile_edit');
+    Route::post('/profile_edit', [UserController::class, 'profileUpdate']);
+    Route::get('/purchase/{item}', [PurchaseController::class, 'show'])->name('purchase.show');
     Route::patch('/profile/update', [UserController::class, 'update'])->name('profile.update');
 
-    Route::get('/purchase/{item}', [PurchaseController::class, 'show'])->name('purchase.show');
     Route::post('/purchase/{item}', [PurchaseController::class, 'store'])->name('purchase.process');
 
     Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');

@@ -1,33 +1,32 @@
 @extends('layouts.app')
 
-@section('css')
-<link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
-@endsection
-
 @section('content')
-<body>
-    <div class="mypage-container">
-        <h1>プロフィール設定</h1>
-        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PATCH')
-            <div class="image-upload">
-                <label for="image-upload" class="profile-image">
-                    <img src="{{ asset('images/default-avatar.png') }}" alt="プロフィール画像">
-                    <input type="file" name="image" id="image-upload">
-                    <button type="button" class="image-select-btn">画像を選択する</button>
-                </label>
-            </div>
-            <label>ユーザー名</label>
-                <input type="text" name="name" value="{{ old('name', Auth::user()->name) }}">
-            <label>郵便番号</label>
-                <input type="text" name="postcode" value="{{ old('postcode', Auth::user()->profile->postcode ?? '') }}">
-            <label>住所</label>
-                <input type="text" name="address" value="{{ old('address', Auth::user()->profile->address ?? '') }}">
-            <label>建物名</label>
-                <input type="text" name="building" value="{{ old('building', Auth::user()->profile->building ?? '') }}">
-            <button type="submit" class="submit-btn">更新する</button>
-        </form>
+<link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
+<div class="mypage-container">
+    <div class="profile-section">
+        <div class="profile-image">
+            <img src="{{ $user->profile && $user->profile->image ? asset('storage/' . $user->profile->image) : asset('images/default-avatar.png') }}" alt="プロフィール画像">
+        </div>
+        <div class="profile-info">
+            <h2>{{ $user->name }}</h2>
+            <a href="{{ route('profile.edit') }}" class="edit-button">プロフィールを編集</a>
+        </div>
     </div>
-</body>
+
+    <div class="tab-menu">
+        <a href="?tab=selling" class="{{ request('tab') !== 'bought' ? 'active' : '' }}">出品した商品</a>
+        <a href="?tab=bought" class="{{ request('tab') === 'bought' ? 'active' : '' }}">購入した商品</a>
+    </div>
+
+    <div class="item-grid">
+        @forelse ($items as $item)
+            <div class="item-card">
+                <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('images/no-image.png') }}" alt="商品画像">
+                <p>{{ $item->name }}</p>
+            </div>
+        @empty
+            <p>商品が見つかりませんでした。</p>
+        @endforelse
+    </div>
+</div>
 @endsection

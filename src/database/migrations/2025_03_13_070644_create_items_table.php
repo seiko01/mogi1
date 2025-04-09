@@ -15,17 +15,16 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->nullable()->default(null);
             $table->foreignId('condition_id')->constrained()->onDelete('cascade');
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
             $table->string('name');
             $table->string('brand_name')->nullable();
-            $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
-            $table->timestamps();
             $table->string('status')->default('available');
+            $table->string('img_url')->nullable();
+            $table->string('image')->nullable();
+            $table->timestamps();
         });
     }
 

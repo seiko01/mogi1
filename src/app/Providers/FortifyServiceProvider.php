@@ -14,7 +14,6 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\VerifyEmailViewResponse;
 use App\Http\Responses\VerifyEmailViewResponse as CustomVerifyEmailViewResponse;
-use Laravel\Fortify\Contracts\RegisterResponse;
 
 
 class FortifyServiceProvider extends ServiceProvider
@@ -47,14 +46,10 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(10)->by($email . $request->ip());
         });
 
-        app()->singleton(RegisterResponse::class, function () {
-        return new class implements RegisterResponse {
-            public function toResponse($request)
-            {
-                return redirect('/mypage');
+        Fortify::authenticateUsing(function (Request $request) {
+            if ($request->isMethod('post')) {
+                return redirect()->route('profile_edit');
             }
-        };
-    });
-        
+        });
     }
 }

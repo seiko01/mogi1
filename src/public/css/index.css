@@ -95,8 +95,24 @@ body {
 
 .tab-menu {
     display: flex;
-    border-bottom: 2px solid gray;
-    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.tab-menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #666;
+    font-weight: bold;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+    margin-left: 20px;
+}
+
+.tab-menu a.active {
+    color: red;
+    border-color: red;
 }
 
 .tab {

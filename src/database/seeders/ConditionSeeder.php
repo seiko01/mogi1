@@ -17,13 +17,10 @@ class ConditionSeeder extends Seeder
             ['name' => '状態が悪い'],
         ];
 
-        // 既存のデータを削除
         DB::table('conditions')->delete();
 
-        // AUTO_INCREMENT をリセット（MySQL専用）
         DB::statement('ALTER TABLE conditions AUTO_INCREMENT = 1;');
 
-        // データを挿入
         foreach ($conditions as $index => $condition) {
             DB::table('conditions')->insert([
                 'name' => $condition['name'],

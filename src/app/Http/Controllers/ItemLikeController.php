@@ -58,4 +58,9 @@ class ItemLikeController extends Controller
 
             return view('show', compact('item', 'isLiked'));
         }
+        public function item()
+        {
+            return $this->belongsTo(\App\Models\Item::class);
+        }
+
     }

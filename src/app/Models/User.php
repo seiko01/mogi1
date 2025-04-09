@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Address;
+use App\Models\Item;
+use App\Models\Purchase;
+use App\Models\Like;
 
 
 class User extends Authenticatable
@@ -55,6 +58,26 @@ class User extends Authenticatable
     public function address()
     {
         return $this->hasOne(Address::class);
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function boughtItems()
+    {
+        return $this->hasManyThrough(Item::class, Purchase::class);
+    }
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }
 

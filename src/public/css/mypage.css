@@ -64,56 +64,111 @@
 }
 
 .mypage-container {
-    max-width: 700px;
-        margin: 0 auto;
-        padding: 30px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);}
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
 
-.image-upload {
-    margin-bottom: 20px;
+.profile-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    flex-wrap: wrap;
+    width: 1017px;
+    height: 150px;
 }
 
 .profile-image img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 10px;
+    background-color: #f0f0f0;
 }
 
-.image-select-btn {
-    background-color: #ff6f61;
+.profile-info {
+    display: flex;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.profile-info h2 {
+    margin: 0;
+    font-size: 24px;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.edit-button {
+    padding: 8px 20px;
+    border: 1px solid #f33;
+    color: #f33;
+    background: none;
+    border-radius: 5px;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-left: 20px;
+}
+
+.edit-button:hover {
+    background-color: #f33;
     color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
-.image-select-btn:hover {
-    background-color: #ff4f41;
+.tab-menu {
+    display: flex;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 30px;
+    gap: 20px;
 }
 
-.mypage-container input[type="text"] {
-    width: 100%;
+.tab-menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #666;
+    font-weight: bold;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+    margin-left: 20px;
+}
+
+.tab-menu a.active {
+    color: red;
+    border-color: red;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+}
+
+.item-card {
+    text-align: center;
+    border: 1px solid #ddd;
     padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #fff;
+    transition: box-shadow 0.3s;
 }
 
-.submit-btn {
+.item-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item-card img {
     width: 100%;
-    padding: 10px;
-    background-color: #ff6f61;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    height: 150px;
+    object-fit: cover;
+    background-color: #f4f4f4;
+    border-radius: 3px;
 }
 
-.submit-btn:hover {
-    background-color: #ff4f41;
+.item-card p {
+    margin-top: 10px;
+    font-size: 14px;
 }

@@ -4,7 +4,7 @@
 
 Dockerビルド
 
-1. `git clone git@github.com:seiko01/exam0129.git`
+1. `git@github.com:seiko01/mogi1.git`
 2. DockerDesktopアプリの立ち上げ
 3. `docker-compose up -d --build`
 

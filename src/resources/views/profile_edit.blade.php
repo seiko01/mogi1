@@ -5,29 +5,28 @@
 @endsection
 
 @section('content')
-<div class="profile-edit__container">
-    <div class="profile-edit__title">
-        <h2>プロフィール設定</h2>
+<body>
+    <div class="mypage-container">
+        <h1>プロフィール設定</h1>
+        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PATCH')
+            <div class="image-upload">
+                <label for="image-upload" class="profile-image">
+                    <img src="{{ $user->profile && $user->profile->image ? asset('storage/' . $user->profile->image) : asset('images/default-avatar.png') }}" alt="プロフィール画像">
+                    <input type="file" name="image" id="image-upload">
+                </label>
+            </div>
+            <label>ユーザー名</label>
+                <input type="text" name="name" value="{{ old('name', Auth::user()->name) }}">
+            <label>郵便番号</label>
+                <input type="text" name="postcode" value="{{ old('postcode', Auth::user()->profile->postcode ?? '') }}">
+            <label>住所</label>
+                <input type="text" name="address" value="{{ old('address', Auth::user()->profile->address ?? '') }}">
+            <label>建物名</label>
+                <input type="text" name="building" value="{{ old('building', Auth::user()->profile->building ?? '') }}">
+            <button type="submit" class="submit-btn">更新する</button>
+        </form>
     </div>
-    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="profile-edit__image">
-            <img src="{{ asset('img/default-profile.png') }}" alt="プロフィール画像">
-            <label class="profile-edit__image-btn">画像を選択する <input type="file" name="profile_image" hidden></label>
-        </div>
-        <div class="profile-edit__form">
-            <label for="username">ユーザー名</label>
-            <input type="text" name="username" value="{{ old('username') }}">
-            <label for="postcode">郵便番号</label>
-            <input type="text" name="postcode" value="{{ old('postcode') }}">
-            <label for="address">住所</label>
-            <input type="text" name="address" value="{{ old('address') }}">
-            <label for="building">建物名</label>
-            <input type="text" name="building" value="{{ old('building') }}">
-        </div>
-        <div class="profile-edit__button">
-            <button type="submit">更新する</button>
-        </div>
-    </form>
-</div>
+</body>
 @endsection
