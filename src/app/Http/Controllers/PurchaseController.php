@@ -43,12 +43,24 @@ class PurchaseController extends Controller
     public function editAddress($item_id)
     {
         $user = Auth::user();
-        $profile = $user->profile;
 
+        if (!$user->profile) {
+            $user->profile()->create([
+                'postcode' => '',
+                'address' => '',
+                'building' => '',
+                'image' => '',
+            ]);
+
+            $user->refresh();
+        }
+
+        $profile = $user->profile;
         $item = Item::findOrFail($item_id);
 
         return view('address_edit', compact('profile', 'item'));
     }
+
     public function updateAddress(Request $request, $item_id)
     {
         $request->validate([
