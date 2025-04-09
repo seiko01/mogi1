@@ -45,11 +45,5 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(10)->by($email . $request->ip());
         });
-
-        Fortify::authenticateUsing(function (Request $request) {
-            if ($request->isMethod('post')) {
-                return redirect()->route('profile_edit');
-            }
-        });
     }
 }

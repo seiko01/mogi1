@@ -10,6 +10,17 @@ use App\Http\Controllers\CommentController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ItemLikeController;
+use Illuminate\Support\Facades\Auth;
+
+Route::get('/redirect-after-login', function () {
+    $user = Auth::user();
+
+if ($user && $user->profile && $user->profile->postcode && $user->profile->address) {
+        return redirect('/');
+    } else {
+        return redirect('/profile_edit');
+    }
+});
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
@@ -26,8 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/sell', [ItemController::class, 'create'])->name('sell');
     Route::post('/items', [ItemController::class, 'store'])->name('items.store');
 
-    Route::get('/profile_edit', [UserController::class, 'edit'])->name('profile_edit');
-    Route::post('/profile_edit', [UserController::class, 'profileUpdate']);
+    Route::get('/profile_edit', [UserController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile_edit', [UserController::class, 'profileUpdate'])->name('profile.update.post');
     Route::get('/purchase/{item}', [PurchaseController::class, 'show'])->name('purchase.show');
     Route::patch('/profile/update', [UserController::class, 'update'])->name('profile.update');
 
@@ -38,5 +49,4 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/comments/store/{item}', [CommentController::class, 'store'])->name('comments.store');
 
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-    });
+});

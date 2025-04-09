@@ -79,8 +79,8 @@
                     <div class="comment">
                         <div class="comment-user">
                             {{-- アイコンを表示 --}}
-                            @if ($comment->user->icon)
-                                <img src="{{ asset('storage/' . $comment->user->icon) }}" alt="User Icon" class="user-icon">
+                            @if ($comment->user->profile && $comment->user->profile->image)
+                                <img src="{{ asset('storage/' . $comment->user->profile->image) }}" alt="プロフィール画像">
                             @else
                                 <div class="user-icon">👤</div>
                             @endif
