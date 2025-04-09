@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // ユーザーと紐づけ
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('postcode')->nullable();
             $table->string('address')->nullable();
             $table->string('building')->nullable();
